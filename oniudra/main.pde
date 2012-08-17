@@ -6,11 +6,10 @@ int connected = 0;
 long measurementPeriod = 60000; //i.e.: ~60 seconds between measurements
 
 void setup(){
-  // start serial port at 9600 bps:
-  Serial.begin(9600); 
 
-  // pause to let Xport boot up:
-  delay(2000);
+  Serial.begin(9600);  // start serial port at 9600 bps:
+  
+  delay(2000);// pause to let Xport boot up:
 }
 
 void loop(){
@@ -21,13 +20,12 @@ void loop(){
     // to the server:
 
     if (connected == 1){
-     // read sensors, convert to bytes:
-     adcVar = analogRead(0);
-     // send HTTP GET request for php script:
-     http_request();
+     adcVar = analogRead(0);  // read sensors, convert to bytes:
+   
+     http_request();   // send HTTP GET request for php script:
     } else {
-     // attempt to connect to the server:
-     xport_connect();
+    
+     xport_connect();  // attempt to connect to the server:
     }
 
     digitalWrite(tcpPin, connected);
@@ -64,7 +62,7 @@ void http_request(){
     Serial.print(adcVar,DEC);
     Serial.print(" HTTP/1.1");
     Serial.print(10, BYTE);
-    Serial.print("HOST: itp.nyu.edu");
+    Serial.print("HOST: gorato.com");
     Serial.print(10, BYTE);
     Serial.print(10, BYTE);
 
